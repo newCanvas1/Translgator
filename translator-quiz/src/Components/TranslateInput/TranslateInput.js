@@ -9,23 +9,11 @@ export default function TranslateInput() {
     setInput(text);
   }
 
-  function userClickTranslate() {
-    let wordsList=input.split(" ");
-
-    console.log(wordsList);
-  }
 
   return (
     <div className="input-section" onChange={userTyping}>
       <input type="text" className="input" placeholder="Enter here!" />
-      {input !== "" && (
-        <button
-          className="input-button background-hover"
-          onClick={userClickTranslate}
-        >
-          Translate
-        </button>
-      )}
+      
 
       <Output wordsList={input}/>
     </div>
