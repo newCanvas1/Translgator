@@ -1,67 +1,45 @@
 .input-button {
-    background-color: aqua;
-    padding: 1rem;
-    border: none;
-    border-radius: 1rem;
-    cursor: pointer;
-    transition: all 500ms;
-    font-family: "Josefin Sans";
-    width: 15rem;
-    font-size: 2rem;
+  background-color: aqua;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 500ms;
+  font-family: "Josefin Sans";
+  width: 15rem;
+  font-size: 2rem;
+}
 
-  }
-  
-  .background-hover:hover{
+.background-hover:hover {
   background-color: rgb(46, 196, 176);
   color: white;
-  }
-  
-  .output-area{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .output{
-    margin-top: 1rem;
-    display: flex;
-  }
-
-  .emptyDiv{
-    height: 1rem;
-    width: 4rem;
-  }
-
-  .input-area{
-    width: 3rem;
-    height: 3rem;
-    font-size: 3rem;
-    text-align: center;
-    border: none;
-    border-bottom: 0.1rem black solid;
-    margin: 0.5rem;
-  }
-
-  .input-area:focus{
-    outline: none;
-  }
-
-  .result{
-    color: rgb(46, 189, 46);
-    transition: all 500ms;
-  }
-.check{
-  margin-top: 3rem;
-
 }
-  @media screen and (width<1000px) {
-    .input-button{
-        font-size: 3vw;
-    }
-    .input-area{
-     font-size: 4vw;
-     height: 3vw;
-     width: 3vw;
-      }
-    
+
+.output-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-area:focus {
+  outline: none;
+}
+
+.result {
+  color: rgb(46, 189, 46);
+  transition: all 500ms;
+}
+.check {
+  margin-top: 3rem;
+}
+
+@media screen and (width<1000px) {
+  .input-button {
+    font-size: 3vw;
+  }
+  .input-area {
+    font-size: 4vw;
+    height: 3vw;
+    width: 3vw;
+  }
 }

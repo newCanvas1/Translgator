@@ -1,37 +1,35 @@
-.emptyDiv{
-    height: 1rem;
-    width: 4rem;
-  }
+.emptyDiv {
+  height: 1rem;
+  width: 4rem;
+}
 
-  .input-area{
-    width: 3rem;
-    height: 3rem;
-    font-size: 3rem;
-    text-align: center;
-    border: none;
-    border-bottom: 0.1rem black solid;
-    margin: 0.5rem;
-  }
-  .output{
-    margin-top: 1rem;
-    display: flex;
-  }
+.input-area {
+  width: 3rem;
+  height: 3rem;
+  font-size: 3rem;
+  text-align: center;
+  border: none;
+  border-bottom: 0.1rem black solid;
+  margin: 0.5rem;
+}
+.output {
+  margin-top: 1rem;
+  display: flex;
+}
 
-  .input-area:focus{
-    outline: none;
+.input-area:focus {
+  outline: none;
+}
+@media screen and (width<1000px) {
+  .input-button {
+    font-size: 3vw;
   }
-  @media screen and (width<1000px) {
-    .input-button{
-        font-size: 3vw;
-    }
-    .input-area{
-     font-size: 4vw;
-     height: 3vw;
-     width: 3vw;
-      }
-      .output{
-        
-        display: block;
-      }
-    
+  .input-area {
+    font-size: 4vw;
+    height: 3vw;
+    width: 3vw;
+  }
+  .output {
+    display: block;
+  }
 }

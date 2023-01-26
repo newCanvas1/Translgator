@@ -4,6 +4,34 @@ import React from "react";
 export default function Input(props) {
   const [boxs, setBoxes] = React.useState([]);
 
+  function handlePress(event) {
+    
+    let list = [];
+    let elements = document.getElementsByClassName("user-text");
+    for (let i = 0; i < elements.length; i++) {
+      list.push(elements[i]);
+    }
+    let index = list.indexOf(event.target);
+
+    for (let i = 0; i < list.length; i++) {
+      if (event.keyCode === 8) {
+        if (index === 0) {
+          list[list.length - 1].focus();
+        } else {
+          list[index - 1].focus();
+        }
+      } else {
+        if (index === list.length - 1) {
+          list[0].focus();
+        } else {
+          list[index + 1].focus();
+        }
+      }
+    }
+
+    console.log(index);
+  }
+
   let word = props.word;
   React.useEffect(() => {
     setBoxes([]);
@@ -40,7 +68,16 @@ export default function Input(props) {
         // else make an embty input box (where user can write)
         else {
           setBoxes((prev) => {
-            return [[...prev, <input type={"text"} className="input-area" />]];
+            return [
+              [
+                ...prev,
+                <input
+                  type={"text"}
+                  onKeyUp={handlePress}
+                  className="input-area user-text"
+                />,
+              ],
+            ];
           });
         }
       }

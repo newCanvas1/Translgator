@@ -7,6 +7,8 @@ export default function Output(props) {
   // console.log("Output Rendered. ")
   const [outputArea, setOutputArea] = React.useState();
   const [result, setResult] = React.useState(false);
+  const [isEmbty, setIsEmbty] = React.useState(false);
+
   const [show, setShow] = React.useState(true);
 
   let word = props.wordsList;
@@ -15,28 +17,34 @@ export default function Output(props) {
     // send a fetch request to API
     setOutputArea(<Input word={word} />);
 
+    setShow((prev) => {
+      return !prev;
+    });
+    setTimeout(() => {
+      console.log(show);
+      setShow((prev) => {
+        return !prev;
+      });
+    }, 200);
 
-
-    setShow((prev)=>{return!prev})
-    setTimeout(()=>{
-    console.log(show)
-    setShow((prev)=>{return!prev})
-
-    },200)
-    
-    inputBoxInScreen=true
+    inputBoxInScreen = true;
   }
 
   function check() {
+    console.log(isEmbty)
     let inputList = document.getElementsByClassName("input-area");
     let comparisonWord = word.replace(" ", "");
     for (let i = 0; i < inputList.length; i++) {
-      console.log(inputList[i].value === comparisonWord[i]);
+      if (inputList[i].value === "") {
+        setIsEmbty(true);
+        break;
+      }
       if (inputList[i].value !== comparisonWord[i]) {
         setResult(false);
         break;
       }
       setResult(true);
+      setIsEmbty(false);
     }
   }
 
@@ -50,14 +58,17 @@ export default function Output(props) {
           Translate
         </button>
       )}
-      <div className="output">{show&&outputArea}</div>
+      <div className="output">{show && outputArea}</div>
       {inputBoxInScreen && (
         <button className="input-button background-hover check" onClick={check}>
           check
         </button>
       )}
+      <div className="result">
+        {isEmbty ? <p>Fill the blanks ! </p> : result && <p className="correct">correct !</p>}
+      </div>
 
-      <div className="result">{result && <h1>correct ! </h1>}</div>
+
     </div>
   );
 }
