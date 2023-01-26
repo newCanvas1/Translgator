@@ -12,7 +12,7 @@
   }
   
   .background-hover:hover{
-  background-color: rgb(68, 62, 62);
+  background-color: rgb(46, 196, 176);
   color: white;
   }
   
@@ -50,7 +50,10 @@
     color: rgb(46, 189, 46);
     transition: all 500ms;
   }
+.check{
+  margin-top: 3rem;
 
+}
   @media screen and (width<1000px) {
     .input-button{
         font-size: 3vw;

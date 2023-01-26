@@ -1,42 +1,30 @@
 import "./Output.css";
 import React from "react";
+import Input from "../Input/Input";
 let inputBoxInScreen = false;
 
 export default function Output(props) {
   // console.log("Output Rendered. ")
-
-  const [outputArea, setOutputArea] = React.useState([]);
+  const [outputArea, setOutputArea] = React.useState();
   const [result, setResult] = React.useState(false);
+  const [show, setShow] = React.useState(true);
 
-  let textAreaListTest = [];
   let word = props.wordsList;
 
   function userClickTranslate() {
     // send a fetch request to API
+    setOutputArea(<Input word={word} />);
 
-    for (let i = 0; i < word.length; i++) {
-      let randomNumber = Math.floor(Math.random() * 10);
 
-      if (word[i] === " ") {
-        textAreaListTest.push(<div className="emptyDiv"> </div>);
-      } else {
-        if (randomNumber % 2 === 0) {
-          textAreaListTest.push(
-            <input
-              type={"text"}
-              value={word[i]}
-              readOnly={true}
-              className="input-area"
-            />
-          );
-        } else {
-          textAreaListTest.push(<input type={"text"} className="input-area" />);
-        }
-      }
-    }
-    inputBoxInScreen = true;
-console.log(textAreaListTest)
-    setOutputArea(textAreaListTest);
+
+    setShow((prev)=>{return!prev})
+    setTimeout(()=>{
+    console.log(show)
+    setShow((prev)=>{return!prev})
+
+    },200)
+    
+    inputBoxInScreen=true
   }
 
   function check() {
@@ -62,9 +50,9 @@ console.log(textAreaListTest)
           Translate
         </button>
       )}
-      <div className="output">{outputArea}</div>
+      <div className="output">{show&&outputArea}</div>
       {inputBoxInScreen && (
-        <button className="input-button background-hover" onClick={check}>
+        <button className="input-button background-hover check" onClick={check}>
           check
         </button>
       )}
