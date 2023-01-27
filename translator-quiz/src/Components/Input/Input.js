@@ -84,6 +84,6 @@ export default function Input(props) {
         }
       }
     }
-  }, [props.word]);
+  }, [word]);
   return <div className="output">{boxs}</div>;
 }
