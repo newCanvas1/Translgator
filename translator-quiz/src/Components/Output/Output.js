@@ -8,6 +8,7 @@ export default function Output(props) {
   const [outputArea, setOutputArea] = React.useState();
   const [result, setResult] = React.useState(false);
   const [isEmbty, setIsEmbty] = React.useState(false);
+  const [checkMessage, setCheckMessage] = React.useState("");
 
   const [show, setShow] = React.useState(true);
 
@@ -17,11 +18,11 @@ export default function Output(props) {
     // send a fetch request to API
     setOutputArea(<Input word={word} />);
 
+    
     setShow((prev) => {
       return !prev;
     });
     setTimeout(() => {
-      console.log(show);
       setShow((prev) => {
         return !prev;
       });
@@ -31,18 +32,28 @@ export default function Output(props) {
   }
 
   function check() {
-    console.log(isEmbty)
+    console.log(isEmbty);
     let inputList = document.getElementsByClassName("input-area");
     let comparisonWord = word.replace(" ", "");
     for (let i = 0; i < inputList.length; i++) {
       if (inputList[i].value === "") {
         setIsEmbty(true);
+        document.getElementsByClassName("correct")[0].classList.add("blanks")
+
+        setCheckMessage("Fill the blanks")
         break;
       }
       if (inputList[i].value !== comparisonWord[i]) {
         setResult(false);
+        document.getElementsByClassName("correct")[0].classList.add("blanks")
+        setCheckMessage("Try Again")
+
         break;
       }
+      document.getElementsByClassName("correct")[0].classList.remove("blanks")
+
+      setCheckMessage("Correct !")
+
       setResult(true);
       setIsEmbty(false);
     }
@@ -55,7 +66,6 @@ export default function Output(props) {
           className="input-button background-hover"
           onClick={userClickTranslate}
         >
-          
           Translate
         </button>
       )}
@@ -66,10 +76,10 @@ export default function Output(props) {
         </button>
       )}
       <div className="result">
-        {isEmbty ? <p className="correct blanks">Fill the blanks ! </p> : result && <p className="correct">correct !</p>}
+        {/* {isEmbty ? <p className="correct blanks">Fill the blanks </p> : result && <p className="correct">correct !</p>} */}
+       
+        <p className="correct"> {checkMessage}</p>
       </div>
-
-
     </div>
   );
 }
