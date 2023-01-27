@@ -33,6 +33,26 @@
   margin-top: 3rem;
 }
 
+.correct {
+  animation: correct;
+  animation-duration: 1s;
+}
+
+.blanks{
+  color: rgb(189, 59, 59)
+}
+
+
+@keyframes correct {
+  0% {
+    transform: translateY(-1rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
 @media screen and (width<1000px) {
   .input-button {
     font-size: 3vw;

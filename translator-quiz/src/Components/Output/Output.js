@@ -55,6 +55,7 @@ export default function Output(props) {
           className="input-button background-hover"
           onClick={userClickTranslate}
         >
+          
           Translate
         </button>
       )}
@@ -65,7 +66,7 @@ export default function Output(props) {
         </button>
       )}
       <div className="result">
-        {isEmbty ? <p>Fill the blanks ! </p> : result && <p className="correct">correct !</p>}
+        {isEmbty ? <p className="correct blanks">Fill the blanks ! </p> : result && <p className="correct">correct !</p>}
       </div>
 
 

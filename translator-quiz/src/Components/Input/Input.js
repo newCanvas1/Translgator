@@ -75,6 +75,8 @@ export default function Input(props) {
                   type={"text"}
                   onKeyUp={handlePress}
                   className="input-area user-text"
+                  maxLength={1}
+
                 />,
               ],
             ];
