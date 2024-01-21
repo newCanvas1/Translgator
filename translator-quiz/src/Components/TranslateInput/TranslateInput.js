@@ -13,8 +13,6 @@ export default function TranslateInput() {
   return (
     <div className="input-section" onChange={userTyping}>
       <input type="text" className="input" placeholder="Enter here!" />
-      
-
       <Output wordsList={input}/>
     </div>
   );

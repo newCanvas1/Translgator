@@ -1,6 +1,7 @@
 import "./Output.css";
 import React from "react";
 import Input from "../Input/Input";
+import translateWord from "../../functions/translateWord";
 let inputBoxInScreen = false;
 
 export default function Output(props) {
@@ -9,16 +10,18 @@ export default function Output(props) {
   const [result, setResult] = React.useState(false);
   const [isEmbty, setIsEmbty] = React.useState(false);
   const [checkMessage, setCheckMessage] = React.useState("");
+  const [translatedWord, setTranslatedWord] = React.useState();
 
   const [show, setShow] = React.useState(true);
 
   let word = props.wordsList;
 
-  function userClickTranslate() {
+  async function userClickTranslate() {
+    const translatedWord = await translateWord(word);
+    console.log(translatedWord);
+    setTranslatedWord(translatedWord);
     // send a fetch request to API
-    setOutputArea(<Input word={word} />);
-
-    
+    setOutputArea(<Input word={translatedWord} />);
     setShow((prev) => {
       return !prev;
     });
@@ -32,27 +35,26 @@ export default function Output(props) {
   }
 
   function check() {
-    console.log(isEmbty);
     let inputList = document.getElementsByClassName("input-area");
-    let comparisonWord = word.replace(" ", "");
+    let comparisonWord = translatedWord.replace(" ", "");
     for (let i = 0; i < inputList.length; i++) {
       if (inputList[i].value === "") {
         setIsEmbty(true);
-        document.getElementsByClassName("correct")[0].classList.add("blanks")
-
-        setCheckMessage("Fill the blanks")
+        document.getElementsByClassName("correct")[0].classList.add("blanks");
+        setCheckMessage("Fill the blanks");
         break;
       }
       if (inputList[i].value !== comparisonWord[i]) {
+        console.log(inputList[i].value);
+        console.log(comparisonWord[i]);
         setResult(false);
-        document.getElementsByClassName("correct")[0].classList.add("blanks")
-        setCheckMessage("Try Again")
-
+        document.getElementsByClassName("correct")[0].classList.add("blanks");
+        setCheckMessage("Try Again");
         break;
       }
-      document.getElementsByClassName("correct")[0].classList.remove("blanks")
+      document.getElementsByClassName("correct")[0].classList.remove("blanks");
 
-      setCheckMessage("Correct !")
+      setCheckMessage("Correct !");
 
       setResult(true);
       setIsEmbty(false);
@@ -77,7 +79,7 @@ export default function Output(props) {
       )}
       <div className="result">
         {/* {isEmbty ? <p className="correct blanks">Fill the blanks </p> : result && <p className="correct">correct !</p>} */}
-       
+
         <p className="correct"> {checkMessage}</p>
       </div>
     </div>

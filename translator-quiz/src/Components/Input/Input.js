@@ -28,8 +28,6 @@ export default function Input(props) {
         }
       }
     }
-
-    console.log(index);
   }
 
   let word = props.word;
