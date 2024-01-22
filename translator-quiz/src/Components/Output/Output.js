@@ -1,27 +1,30 @@
 import "./Output.css";
 import React from "react";
 import Input from "../Input/Input";
-import translateWord from "../../functions/translateWord";
+import { Discuss } from "react-loader-spinner";
+
 let inputBoxInScreen = false;
 
-export default function Output(props) {
-  // console.log("Output Rendered. ")
+export default function Output({ wordsList, toLanguage }) {
   const [outputArea, setOutputArea] = React.useState();
-  const [result, setResult] = React.useState(false);
-  const [isEmbty, setIsEmbty] = React.useState(false);
   const [checkMessage, setCheckMessage] = React.useState("");
   const [translatedWord, setTranslatedWord] = React.useState();
-
   const [show, setShow] = React.useState(true);
-
-  let word = props.wordsList;
+  const [translating, setTranslating] = React.useState(false);
 
   async function userClickTranslate() {
-    const translatedWord = await translateWord(word);
-    console.log(translatedWord);
-    setTranslatedWord(translatedWord);
-    // send a fetch request to API
-    setOutputArea(<Input word={translatedWord} />);
+    setTranslating(true);
+    const res = await fetch("http://localhost:3000/translate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ word: wordsList, to: toLanguage }),
+    });
+    const body = await res.json();
+    setTranslatedWord(body.data);
+    setTranslating(false);
+    setOutputArea(<Input word={body.data} />);
     setShow((prev) => {
       return !prev;
     });
@@ -39,15 +42,15 @@ export default function Output(props) {
     let comparisonWord = translatedWord.replace(" ", "");
     for (let i = 0; i < inputList.length; i++) {
       if (inputList[i].value === "") {
-        setIsEmbty(true);
         document.getElementsByClassName("correct")[0].classList.add("blanks");
         setCheckMessage("Fill the blanks");
         break;
       }
-      if (inputList[i].value !== comparisonWord[i]) {
-        console.log(inputList[i].value);
-        console.log(comparisonWord[i]);
-        setResult(false);
+      console.log(inputList[i].value.toLowerCase());
+      console.log(comparisonWord[i].toLowerCase());
+      const inputLetter = inputList[i].value.toLowerCase();
+      const comparisonLetter = comparisonWord[i].toLowerCase();
+      if (inputLetter !== comparisonLetter) {
         document.getElementsByClassName("correct")[0].classList.add("blanks");
         setCheckMessage("Try Again");
         break;
@@ -55,15 +58,12 @@ export default function Output(props) {
       document.getElementsByClassName("correct")[0].classList.remove("blanks");
 
       setCheckMessage("Correct !");
-
-      setResult(true);
-      setIsEmbty(false);
     }
   }
 
   return (
     <div className="output-area">
-      {props.wordsList !== "" && (
+      {wordsList !== "" && (
         <button
           className="input-button background-hover"
           onClick={userClickTranslate}
@@ -71,6 +71,17 @@ export default function Output(props) {
           Translate
         </button>
       )}
+
+      <Discuss
+        visible={translating}
+        height="80"
+        width="80"
+        ariaLabel="discuss-loading"
+        wrapperClass="discuss-wrapper"
+        color="#fff"
+        backgroundColor="#F4442E"
+      />
+
       <div className="output">{show && outputArea}</div>
       {inputBoxInScreen && (
         <button className="input-button background-hover check" onClick={check}>
@@ -78,8 +89,6 @@ export default function Output(props) {
         </button>
       )}
       <div className="result">
-        {/* {isEmbty ? <p className="correct blanks">Fill the blanks </p> : result && <p className="correct">correct !</p>} */}
-
         <p className="correct"> {checkMessage}</p>
       </div>
     </div>
