@@ -1,42 +1,43 @@
 export const options = [
   {
     value: "en",
-    label: "English",
+    label: "🇺🇸 English",
   },
+
   {
     value: "es",
-    label: "Spanish",
+    label: "🇪🇸 Spanish",
   },
   {
     value: "fr",
-    label: "French",
+    label: "🇫🇷 French",
   },
   {
     value: "de",
-    label: "German",
+    label: "🇩🇪 German",
   },
   {
     value: "it",
-    label: "Italian",
+    label: "🇮🇹 Italian",
   },
   {
     value: "pt",
-    label: "Portuguese",
+    label: "🇵🇹 Portuguese",
   },
   {
     value: "ru",
-    label: "Russian",
+    label: "🇷🇺 Russian",
   },
   {
     value: "zh",
-    label: "Chinese",
+    label: "🇨🇳 Chinese",
   },
   {
     value: "ja",
-    label: "Japanese",
+    label: "🇯🇵 Japanese",
   },
   {
     value: "ko",
-    label: "Korean",
+    label: "🇰🇷 Korean",
   },
 ];

@@ -9,6 +9,7 @@ function LangaugeSelect({ setLanguage }) {
 
   return (
     <Select
+      className=" bg-teal-400 text-sm text-black text-left"
       options={options}
       values={[defaultOption]}
       onChange={(values) => setLanguage(values[0].value)}

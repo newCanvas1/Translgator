@@ -9,9 +9,8 @@
 }
 .input-section > * {
   border: none;
-  font-size: 4vw;
+  font-size: 1rem;
   font-family: "Josefin Sans";
-
   text-align: center;
 }
 
@@ -23,4 +22,17 @@
 .input:focus {
   outline: 0;
 }
+.adjust-input-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
 
+@media screen and (max-width: 768px) {
+  .adjust-input-select {
+    display: flex;
+    flex-direction: column;
+  }
+}

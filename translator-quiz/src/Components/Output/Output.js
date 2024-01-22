@@ -1,22 +1,25 @@
 import "./Output.css";
-import React from "react";
+import React, { useContext } from "react";
 import Input from "../Input/Input";
 import { Discuss } from "react-loader-spinner";
-
-let inputBoxInScreen = false;
+import { LanguageContext } from "../../context/LanguageContext";
+import { getLabels } from "../../functions/getLabels";
 
 export default function Output({ wordsList, toLanguage }) {
+  const { language } = useContext(LanguageContext);
+  const labels = getLabels(language);
   const [outputArea, setOutputArea] = React.useState();
   const [checkMessage, setCheckMessage] = React.useState("");
   const [translatedWord, setTranslatedWord] = React.useState();
   const [show, setShow] = React.useState(true);
   const [translating, setTranslating] = React.useState(false);
-
+  const [inputBoxInScreen, setInputBoxInScreen] = React.useState(false);
   async function userClickTranslate() {
     setCheckMessage("");
     setOutputArea(false);
+    setInputBoxInScreen(false);
     setTranslating(true);
-    const res = await fetch("http://localhost:3000/translate", {
+    const res = await fetch("http://localhost:4000/translate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +28,7 @@ export default function Output({ wordsList, toLanguage }) {
     });
     const body = await res.json();
     setTranslatedWord(body.data);
-    setTranslating(false);
+
     setOutputArea(<Input word={body.data} />);
     setShow((prev) => {
       return !prev;
@@ -35,31 +38,31 @@ export default function Output({ wordsList, toLanguage }) {
         return !prev;
       });
     }, 200);
+    setTranslating(false);
 
-    inputBoxInScreen = true;
+    setInputBoxInScreen(true);
   }
 
   function check() {
     let inputList = document.getElementsByClassName("input-area");
     let comparisonWord = translatedWord.replace(" ", "");
+
     for (let i = 0; i < inputList.length; i++) {
       if (inputList[i].value === "") {
         document.getElementsByClassName("correct")[0].classList.add("blanks");
-        setCheckMessage("Fill the blanks");
+        setCheckMessage(labels.fillTheBlanks);
         break;
       }
-      console.log(inputList[i].value.toLowerCase());
-      console.log(comparisonWord[i].toLowerCase());
       const inputLetter = inputList[i].value.toLowerCase();
       const comparisonLetter = comparisonWord[i].toLowerCase();
+      console.log(inputLetter, comparisonLetter);
       if (inputLetter !== comparisonLetter) {
         document.getElementsByClassName("correct")[0].classList.add("blanks");
-        setCheckMessage("Try Again");
+        setCheckMessage(labels.incorrect);
         break;
       }
       document.getElementsByClassName("correct")[0].classList.remove("blanks");
-
-      setCheckMessage("Correct !");
+      setCheckMessage(labels.correct);
     }
   }
 
@@ -70,24 +73,25 @@ export default function Output({ wordsList, toLanguage }) {
           className="input-button background-hover"
           onClick={userClickTranslate}
         >
-          Translate
+          {labels.translate}
         </button>
       )}
 
       <Discuss
+        colors={["#00ffff", "#00ffff", "#00ffff"]}
         visible={translating}
         height="80"
         width="80"
         ariaLabel="discuss-loading"
         wrapperClass="discuss-wrapper"
-        color="#fff"
-        backgroundColor="#F4442E"
       />
 
-      <div className="output w-[100%] bg-blue-50 justify-center items-center overflow-y-auto h-[30%]">{show && outputArea}</div>
+      <div className="output w-[100%]  justify-center items-center overflow-y-auto h-[30%]">
+        {show && outputArea}
+      </div>
       {inputBoxInScreen && (
         <button className="input-button background-hover check" onClick={check}>
-          check
+          {labels.check}
         </button>
       )}
       <div className="result">

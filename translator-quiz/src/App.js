@@ -1,8 +1,24 @@
 import Navbar from "./Components/Navbar/Navbar";
-import TranslateInput from "./Components/TranslateInput/TranslateInput";
+import About from "./Pages/About/About";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import TranslateInput from "./Pages/TranslateInput/TranslateInput";
+import { LanguageProvider } from "./context/LanguageContext";
+
 export default function App() {
-  return <main>
-    {/* <Navbar/> */}
-    <TranslateInput/>
-  </main>;
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <TranslateInput />,
+    },
+    { path: "/about", element: <About /> },
+  ]);
+
+  return (
+    <main>
+      <LanguageProvider>
+        <Navbar />
+        <RouterProvider router={router} />
+      </LanguageProvider>
+    </main>
+  );
 }
