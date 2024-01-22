@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Select from "react-dropdown-select";
 import { options } from "./languageOptions";
 function LangaugeSelect({ setLanguage }) {
   const defaultOption = options[1];
+  useEffect(() => {
+    setLanguage(defaultOption.value);
+  }, []);
 
   return (
     <Select

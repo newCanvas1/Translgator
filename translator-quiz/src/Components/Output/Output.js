@@ -13,6 +13,8 @@ export default function Output({ wordsList, toLanguage }) {
   const [translating, setTranslating] = React.useState(false);
 
   async function userClickTranslate() {
+    setCheckMessage("");
+    setOutputArea(false);
     setTranslating(true);
     const res = await fetch("http://localhost:3000/translate", {
       method: "POST",
@@ -82,7 +84,7 @@ export default function Output({ wordsList, toLanguage }) {
         backgroundColor="#F4442E"
       />
 
-      <div className="output">{show && outputArea}</div>
+      <div className="output w-[100%] bg-blue-50 justify-center items-center overflow-y-auto h-[30%]">{show && outputArea}</div>
       {inputBoxInScreen && (
         <button className="input-button background-hover check" onClick={check}>
           check
