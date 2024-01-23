@@ -24,11 +24,10 @@ export default function Output({ wordsList, toLanguage }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ word: wordsList, to: toLanguage }),
+      body: JSON.stringify({ text: wordsList, to: toLanguage }),
     });
     const body = await res.json();
     setTranslatedWord(body.data);
-
     setOutputArea(<Input word={body.data} />);
     setShow((prev) => {
       return !prev;
@@ -39,7 +38,6 @@ export default function Output({ wordsList, toLanguage }) {
       });
     }, 200);
     setTranslating(false);
-
     setInputBoxInScreen(true);
   }
 

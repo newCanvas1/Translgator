@@ -14,7 +14,7 @@ const LanguageProvider = ({ children }) => {
 
   // Provide the language state and changeLanguage function to the children components
   return (
-    <LanguageContext.Provider value={{ language }}>
+    <LanguageContext.Provider value={{ language,setLanguage }}>
       {children}
     </LanguageContext.Provider>
   );

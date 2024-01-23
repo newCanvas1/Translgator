@@ -12,10 +12,12 @@ const labels = {
     submit: "Submit",
     about: "About",
     home: "Home",
-    enterHereToTranslate: "Enter a sentence/word here to reherse, challenge yourself!",
+    enterHereToTranslate:
+      "Enter a sentence/word here to reherse, challenge yourself!",
     translate: "Translate",
     check: "Check",
     fillTheBlanks: "Fill the blanks",
+    error: "Error, please try again",
   },
   ar: {
     title: "Translgator",
@@ -34,6 +36,7 @@ const labels = {
     translate: "ترجم",
     check: "تحقق",
     fillTheBlanks: "املأ الفراغات",
+    error: "حدث خطأ ، حاول مرة أخرى",
   },
 };
 
