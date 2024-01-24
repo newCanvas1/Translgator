@@ -18,6 +18,8 @@ const labels = {
     check: "Check",
     fillTheBlanks: "Fill the blanks",
     error: "Error, please try again",
+    pageNotAvailable: "Page not available",
+    returnHome: "Return to home page",
   },
   ar: {
     title: "Translgator",
@@ -37,6 +39,8 @@ const labels = {
     check: "تحقق",
     fillTheBlanks: "املأ الفراغات",
     error: "حدث خطأ ، حاول مرة أخرى",
+    pageNotAvailable: "الصفحة غير متوفرة",
+    returnHome: "العودة إلى الصفحة الرئيسية",
   },
 };
 
