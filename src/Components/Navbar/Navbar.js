@@ -50,7 +50,6 @@ function Navbar() {
               }}
             >
               Translgator
-              
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -134,6 +133,17 @@ function Navbar() {
           </Toolbar>
         </Container>
       </AppBar>
+      {/* add the icon here */}
+      <div className=" self-center">
+        <img
+          src="./icon.png"
+          alt="app icon"
+          height={100}
+          width={130}
+          className=" rounded-full shadow-md"
+        />
+      </div>
+
       <Outlet />
     </>
   );

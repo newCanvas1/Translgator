@@ -20,10 +20,6 @@ export default function TranslateInput() {
 
   return (
     <div className="input-section">
-      {/* add the icon here */}
-      <div className="icon">
-        <img src="./icon.png" alt="app icon" height={100} width={130} className=" rounded-full shadow-md" />
-      </div>
 
       <p style={{ fontFamily: "inherit", fontSize: 18 }}>{labels.appTitle}</p>
       <div className="adjust-input-select justify-center px-4 w-[100%]">
