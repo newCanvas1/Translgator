@@ -30,7 +30,7 @@ const labels = {
   ar: {
     title: "Translgator",
     subtitle: "اختبر معلوماتك عن مهنة المترجم",
-    correct: "صحيح",
+    correct: "🔥💪 صحيح، أحسنت استمر   ",
     incorrect: "خطأ ، حاول مرة أخرى",
     whatIsTranslgatorTitle: "؟Translgator ما هو  ",
     whatIsTranslgatorDescription:

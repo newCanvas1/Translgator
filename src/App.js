@@ -15,11 +15,10 @@ export default function App() {
       children: [
         { path: "/", element: <TranslateInput /> },
         { path: "/about", element: <About /> },
-        {path: "/contact", element: <Contact/>}
+        { path: "/contact", element: <Contact /> },
       ],
     },
   ]);
-
   return (
     <main>
       <LanguageProvider>

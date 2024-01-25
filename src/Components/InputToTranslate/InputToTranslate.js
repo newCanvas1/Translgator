@@ -15,7 +15,7 @@ function InputToTranslate({ userTyping, length }) {
         onChange={userTyping}
         maxLength={maxLength}
       />
-      <p className="text-sm opacity-25">
+      <p className="text-sm opacity-25 text-right w-[90%]">
         {length} / {maxLength}
       </p>
     </div>
