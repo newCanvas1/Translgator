@@ -20,6 +20,7 @@ function Navbar() {
   const pages = [
     { title: labels.home, path: "/", key: 1 },
     { title: labels.about, path: "/about", key: 2 },
+    { title: labels.contact, path: "/contact", key: 3 },
   ];
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -87,7 +88,7 @@ function Navbar() {
                       onClick={handleCloseNavMenu}
                       style={{
                         fontFamily: "inherit",
-                        justifyContent: language == "ar" ? "end" : "",
+                        justifyContent: language === "ar" ? "end" : "",
                       }}
                     >
                       {page.title}
@@ -127,7 +128,7 @@ function Navbar() {
                 </Link>
               ))}
             </Box>
-            
+
             <LanguageSelect />
           </Toolbar>
         </Container>

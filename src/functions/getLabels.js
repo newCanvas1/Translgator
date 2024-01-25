@@ -24,6 +24,8 @@ const labels = {
     appTitle: "Enter a sentence/word here to reherse",
     inputPlaceholder: "Apple, Car, Hello, ...",
     toLanguage: "To",
+    start: "Start",
+    contact: "Contact",
   },
   ar: {
     title: "Translgator",
@@ -49,6 +51,8 @@ const labels = {
     appTitle: "أدخل كلمة او جملة لتختبر ذاكرتك ",
     inputPlaceholder: "تفاحة ، سيارة ، مرحبا ... الخ",
     toLanguage: "إلى",
+    start: "ابدأ",
+    contact: "للتواصل",
   },
 };
 

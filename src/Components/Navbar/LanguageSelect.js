@@ -4,7 +4,6 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { LanguageContext } from "../../context/LanguageContext";
 import { getLabels } from "../../functions/getLabels";
-import { constants } from "../../constants/constants";
 
 export default function LanguageSelect() {
   const [anchorEl, setAnchorEl] = React.useState(null);

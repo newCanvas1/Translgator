@@ -82,7 +82,7 @@ export default function Output({ wordsList, toLanguage }) {
         }
         onClick={userClickTranslate}
       >
-        {labels.translate}
+        {labels.start}
       </button>
 
       <Discuss

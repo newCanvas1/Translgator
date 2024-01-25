@@ -9,7 +9,7 @@ function ErrorPage(props) {
   return (
     <div className=" flex-col text-center">
       <h1 className=" self-center">{labels.pageNotAvailable}</h1>
-      <Link to="/home">
+      <Link to="/">
         <button
           type="button"
           className=" bg-teal-400 p-1 rounded-sm text-white shadow-md"
