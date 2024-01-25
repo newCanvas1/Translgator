@@ -1,11 +1,11 @@
 import "./Output.css";
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import Input from "../Input/Input";
 import { Discuss } from "react-loader-spinner";
 import { LanguageContext } from "../../context/LanguageContext";
 import { getLabels } from "../../functions/getLabels";
 import RefreshIcon from "@mui/icons-material/Refresh";
-export default function Output({ wordsList, toLanguage }) {
+export default function Output({ wordsList, toLanguage, didLangChange }) {
   const { language } = useContext(LanguageContext);
   const labels = getLabels(language);
   const [outputArea, setOutputArea] = React.useState();
@@ -14,6 +14,13 @@ export default function Output({ wordsList, toLanguage }) {
   const [show, setShow] = React.useState(true);
   const [translating, setTranslating] = React.useState(false);
   const [inputBoxInScreen, setInputBoxInScreen] = React.useState(false);
+  useMemo(() => {
+    setOutputArea(false);
+    setInputBoxInScreen(false);
+    setTranslating(false);
+    setShow(true);
+    setCheckMessage("");
+  }, [didLangChange]);
   async function userClickTranslate() {
     setCheckMessage("");
     setOutputArea(false);
@@ -70,6 +77,10 @@ export default function Output({ wordsList, toLanguage }) {
     setTimeout(() => {
       setShow(true);
     }, 100);
+    // relocate to bottom
+    setTimeout(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    }, 300);
   }
 
   return (
@@ -93,15 +104,15 @@ export default function Output({ wordsList, toLanguage }) {
         ariaLabel="discuss-loading"
         wrapperClass="discuss-wrapper"
       />
-<div className=" h-[20%] w-[100%]">
-  <div className="output w-[100%] justify-center items-center overflow-y-auto h-[30%]">
-        {show && outputArea}
+      <div className=" h-[20%] w-[100%]">
+        <div className="output w-[100%] justify-center items-center overflow-y-auto h-[30%]">
+          {show && outputArea}
+        </div>
+        <div className="result">
+          <p className="correct"> {checkMessage}</p>
+        </div>
       </div>
-      <div className="result">
-        <p className="correct"> {checkMessage}</p>
-      </div>
-</div>
-      
+
       {inputBoxInScreen && (
         <>
           <button

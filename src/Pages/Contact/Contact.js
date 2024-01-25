@@ -12,6 +12,7 @@ function Contact(props) {
       <a
         href="https://www.linkedin.com/in/bandar-al-jelwi-5ba4b0275/"
         target="_blank"
+        rel="noreferrer" 
       >
         <div className=" text-center mt-10">
           <p>Bandar Aljelwi | بندر الجلوي</p>

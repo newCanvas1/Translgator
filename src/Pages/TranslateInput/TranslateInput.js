@@ -10,6 +10,7 @@ import { getLabels } from "../../functions/getLabels";
 export default function TranslateInput() {
   const [input, setInput] = React.useState("");
   const [toLanguage, setToLanguage] = React.useState("en");
+  const [didLangChange, setDidLangChange] = React.useState(false);
   const { language } = useContext(LanguageContext);
   const labels = getLabels(language);
 
@@ -24,10 +25,10 @@ export default function TranslateInput() {
       <p style={{ fontFamily: "inherit", fontSize: 18 }}>{labels.appTitle}</p>
       <div className="adjust-input-select justify-center px-4 w-[100%]">
         <InputToTranslate userTyping={userTyping} length={input.length} />
-        <LangaugeSelect setLanguage={setToLanguage} />
+        <LangaugeSelect  setDidLangChange={setDidLangChange} setLanguage={setToLanguage} />
       </div>
 
-      <Output wordsList={input} toLanguage={toLanguage} />
+      <Output wordsList={input} toLanguage={toLanguage} didLangChange={didLangChange} />
     </div>
   );
 }

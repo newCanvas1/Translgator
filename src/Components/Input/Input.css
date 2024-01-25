@@ -12,6 +12,7 @@
   border-bottom: 0.1rem black solid;
   margin: 0.5rem;
   justify-self: end;
+  border-radius: 0;
 }
 .output {
   margin-top: 1rem;
