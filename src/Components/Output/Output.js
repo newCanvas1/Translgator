@@ -4,7 +4,7 @@ import Input from "../Input/Input";
 import { Discuss } from "react-loader-spinner";
 import { LanguageContext } from "../../context/LanguageContext";
 import { getLabels } from "../../functions/getLabels";
-
+import RefreshIcon from "@mui/icons-material/Refresh";
 export default function Output({ wordsList, toLanguage }) {
   const { language } = useContext(LanguageContext);
   const labels = getLabels(language);
@@ -43,9 +43,10 @@ export default function Output({ wordsList, toLanguage }) {
 
   function check() {
     let inputList = document.getElementsByClassName("input-area");
-    let comparisonWord = translatedWord.replace(" ", "");
-
+    let comparisonWord = translatedWord.replaceAll(" ", "");
+    console.log(comparisonWord);
     for (let i = 0; i < inputList.length; i++) {
+      console.log(inputList[i].value);
       if (inputList[i].value === "") {
         document.getElementsByClassName("correct")[0].classList.add("blanks");
         setCheckMessage(labels.fillTheBlanks);
@@ -53,7 +54,6 @@ export default function Output({ wordsList, toLanguage }) {
       }
       const inputLetter = inputList[i].value.toLowerCase();
       const comparisonLetter = comparisonWord[i].toLowerCase();
-      console.log(inputLetter, comparisonLetter);
       if (inputLetter !== comparisonLetter) {
         document.getElementsByClassName("correct")[0].classList.add("blanks");
         setCheckMessage(labels.incorrect);
@@ -64,16 +64,26 @@ export default function Output({ wordsList, toLanguage }) {
     }
   }
 
+  function tryAgain() {
+    setCheckMessage("");
+    setShow(false);
+    setTimeout(() => {
+      setShow(true);
+    }, 100);
+  }
+
   return (
     <div className="output-area">
-      {wordsList !== "" && (
-        <button
-          className="input-button background-hover"
-          onClick={userClickTranslate}
-        >
-          {labels.translate}
-        </button>
-      )}
+      <button
+        disabled={wordsList.length === 0}
+        className={
+          "input-button background-hover" +
+          (wordsList.length === 0 ? " opacity-20" : "")
+        }
+        onClick={userClickTranslate}
+      >
+        {labels.translate}
+      </button>
 
       <Discuss
         colors={["#00ffff", "#00ffff", "#00ffff"]}
@@ -83,18 +93,31 @@ export default function Output({ wordsList, toLanguage }) {
         ariaLabel="discuss-loading"
         wrapperClass="discuss-wrapper"
       />
-
-      <div className="output w-[100%]  justify-center items-center overflow-y-auto h-[30%]">
+<div className=" h-[20%] w-[100%]">
+  <div className="output w-[100%] justify-center items-center overflow-y-auto h-[30%]">
         {show && outputArea}
       </div>
-      {inputBoxInScreen && (
-        <button className="input-button background-hover check" onClick={check}>
-          {labels.check}
-        </button>
-      )}
       <div className="result">
         <p className="correct"> {checkMessage}</p>
       </div>
+</div>
+      
+      {inputBoxInScreen && (
+        <>
+          <button
+            className="input-button background-hover check"
+            onClick={check}
+          >
+            {labels.check}
+          </button>
+          <button
+            className=" bg-[#00ffff] w-10 h-10 rounded-full m-4 flex justify-center items-center"
+            onClick={tryAgain}
+          >
+            <RefreshIcon />
+          </button>
+        </>
+      )}
     </div>
   );
 }

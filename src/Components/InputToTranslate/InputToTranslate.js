@@ -10,8 +10,8 @@ function InputToTranslate({ userTyping, length }) {
     <div className="flex-1 w-[100%]">
       <input
         type="text"
-        className="input text-center"
-        placeholder={labels.enterHereToTranslate}
+        className="input text-center  "
+        placeholder={labels.inputPlaceholder}
         onChange={userTyping}
         maxLength={maxLength}
       />

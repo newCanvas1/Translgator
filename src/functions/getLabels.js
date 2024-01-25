@@ -8,7 +8,7 @@ const labels = {
     tryAgain: "Try again",
     whatIsTranslgatorTitle: "What is Translgator ?",
     whatIsTranslgatorDescription:
-      "Translgator is a an app that helps memorize words in a foreign language through quick missing letter quizzes.",
+      "An app that helps memorize words in a language through quick missing letter quizzes",
     submit: "Submit",
     about: "About",
     home: "Home",
@@ -20,6 +20,10 @@ const labels = {
     error: "Error, please try again",
     pageNotAvailable: "Page not available",
     returnHome: "Return to home page",
+    language: "Language",
+    appTitle: "Enter a sentence/word here to reherse",
+    inputPlaceholder: "Apple, Car, Hello, ...",
+    toLanguage: "To",
   },
   ar: {
     title: "Translgator",
@@ -28,7 +32,7 @@ const labels = {
     incorrect: "خطأ ، حاول مرة أخرى",
     whatIsTranslgatorTitle: "؟Translgator ما هو  ",
     whatIsTranslgatorDescription:
-      ".هو تطبيق يساعد على حفظ الكلمات في لغة أجنبية من خلال اختبارات سريعة للحروف المفقودة Translgator",
+      "تطبيق يساعد على حفظ الكلمات في لغة مراد تعلمها من خلال اختبارات سريعة للحروف المفقودة ",
     congratulations: "تهانينا!",
     tryAgain: "حاول مرة أخرى",
     submit: "إرسال",
@@ -41,6 +45,10 @@ const labels = {
     error: "حدث خطأ ، حاول مرة أخرى",
     pageNotAvailable: "الصفحة غير متوفرة",
     returnHome: "العودة إلى الصفحة الرئيسية",
+    language: "اللغة",
+    appTitle: "أدخل كلمة او جملة لتختبر ذاكرتك ",
+    inputPlaceholder: "تفاحة ، سيارة ، مرحبا ... الخ",
+    toLanguage: "إلى",
   },
 };
 

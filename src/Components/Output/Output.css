@@ -4,10 +4,9 @@
   border: none;
   border-radius: 1rem;
   cursor: pointer;
-  transition: all 500ms;
-  font-family: "Josefin Sans";
   width: 15rem;
-  font-size: 2rem;
+  font-family: 'Tajawal';
+  font-size: 3rem;
 }
 
 .background-hover:hover {
@@ -27,7 +26,6 @@
 
 .result {
   color: rgb(46, 189, 46);
-  transition: all 500ms;
 }
 .check {
   margin-top: 3rem;
@@ -55,10 +53,10 @@
 
 @media screen and (width<1000px) {
   .input-button {
-    font-size: 3vw;
+    font-size: 1rem;
   }
   .input-area {
-    font-size: 4vw;
+    font-size: 1vw;
     height: 3vw;
     width: 3vw;
   }

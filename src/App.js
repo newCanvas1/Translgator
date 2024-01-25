@@ -12,7 +12,7 @@ export default function App() {
       element: <Navbar />,
       errorElement: <ErrorPage />,
       children: [
-        { path: "/home", element: <TranslateInput /> },
+        { path: "/", element: <TranslateInput /> },
         { path: "/about", element: <About /> },
       ],
     },
