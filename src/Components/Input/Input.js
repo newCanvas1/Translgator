@@ -1,7 +1,7 @@
 import "./Input.css";
 import React from "react";
 
-export default function Input(props) {
+export default function Input({word}) {
   const [boxs, setBoxes] = React.useState([]);
 
   function handlePress(event) {
@@ -12,25 +12,38 @@ export default function Input(props) {
       list.push(elements[i]);
     }
     let index = list.indexOf(event.target);
+   // when a user presses a key, the focus is shifted to the next input box
+   
 
-    for (let i = 0; i < list.length; i++) {
-      if (event.keyCode === 8) {
-        if (index === 0) {
-          list[list.length - 1].focus();
-        } else {
+    if (event.target.value !== "") {
+      if (index < list.length - 1) {
+        list[index + 1].focus();
+      }
+    }
+    // user clicks backspace
+    if (event.keyCode === 8) {
+      // if the input box is not empty, then the focus is not shifted
+      if (event.target.value != "") {
+        return;
+      }
+     // if the input box is empty, then focus is shifted to the previous input box
+
+      if (index > 0) {
+        if (list[index].value === "") {
           list[index - 1].focus();
-        }
-      } else {
-        if (index === list.length - 1) {
-          list[0].focus();
-        } else {
-          list[index + 1].focus();
+          // select the previous input box
+          list[index - 1].select();
         }
       }
     }
+    
+
+
+
+
+    
   }
 
-  let word = props.word;
   React.useEffect(() => {
     setBoxes([]);
     console.log("Input Rendered. " + word);

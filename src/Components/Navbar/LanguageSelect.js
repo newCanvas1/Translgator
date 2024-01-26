@@ -4,6 +4,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { LanguageContext } from "../../context/LanguageContext";
 import { getLabels } from "../../functions/getLabels";
+import { setToLocalStorage } from "../../functions/localStorage";
 
 export default function LanguageSelect() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -57,6 +58,7 @@ export default function LanguageSelect() {
             onClick={() => {
               handleLanguageChange(item.value);
               handleClose();
+              setToLocalStorage("language", item.value);
             }}
             style={{ fontFamily: "inherit" }}
           >

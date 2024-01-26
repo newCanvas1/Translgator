@@ -2,7 +2,7 @@ const labels = {
   en: {
     title: "Translgator",
     subtitle: "Test your knowledge of the translator profession",
-    correct: "Correct",
+    correct: " Correct, keep going 💪🔥",
     incorrect: "Incorrect, try again",
     congratulations: "Congratulations!",
     tryAgain: "Try again",
@@ -26,6 +26,7 @@ const labels = {
     toLanguage: "To",
     start: "Start",
     contact: "Contact",
+    techStack: "Tech Stack",
   },
   ar: {
     title: "Translgator",
@@ -53,6 +54,7 @@ const labels = {
     toLanguage: "إلى",
     start: "ابدأ",
     contact: "للتواصل",
+    techStack: "التقنيات المستخدمة",
   },
 };
 

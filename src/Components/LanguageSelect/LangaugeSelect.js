@@ -1,20 +1,34 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Select from "react-dropdown-select";
 import { options } from "./languageOptions";
 import { LanguageContext } from "../../context/LanguageContext";
 import { getLabels } from "../../functions/getLabels";
+
 function LangaugeSelect({ setLanguage, setDidLangChange }) {
   const { language } = useContext(LanguageContext);
   const labels = getLabels(language);
-  const defaultOption = options[1];
+  const [defaultOption, setDefaultOption] = useState(options[1]);
+
   useEffect(() => {
-    setLanguage(defaultOption.value);
+    const storedLanguage = localStorage.getItem("to-language");
+    if (storedLanguage) {
+      setDefaultOption(
+        options.find((option) => option.value === storedLanguage)
+      );
+      setLanguage(storedLanguage);
+    } else {
+      setLanguage(defaultOption.value);
+    }
     // eslint-disable-next-line
   }, []);
+
   function langChange(value) {
+    
     setDidLangChange((prev) => !prev);
     setLanguage(value);
+    localStorage.setItem("to-language", value);
   }
+
   return (
     <div>
       <p>{labels.toLanguage}</p>

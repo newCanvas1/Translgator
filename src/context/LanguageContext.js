@@ -8,13 +8,21 @@ const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState("ar");
 
   useEffect(() => {
-    const browserLanguage = navigator.language.split("-")[0];
-    setLanguage(browserLanguage);
+    // Get the language from the browser localStorage
+    const localStorageLanguage = localStorage.getItem("language");
+    if (localStorageLanguage) {
+      setLanguage(localStorageLanguage);
+    } else {
+      // If there is no language in the localStorage, set the language to the browser language
+      const browserLanguage = navigator.language.split("-")[0];
+      setLanguage(browserLanguage);
+    }
+    // eslint-disable-next-line
   }, []);
 
   // Provide the language state and changeLanguage function to the children components
   return (
-    <LanguageContext.Provider value={{ language,setLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}
     </LanguageContext.Provider>
   );

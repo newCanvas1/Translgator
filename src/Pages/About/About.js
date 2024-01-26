@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 import { getLabels } from "../../functions/getLabels";
+import TechStack from "./TechStack";
 
 function About(props) {
   const { language } = useContext(LanguageContext);
@@ -11,6 +12,7 @@ function About(props) {
       <p className=" text-xl text-center text-gray-500 ">
        {labels.whatIsTranslgatorDescription}
       </p>
+      <TechStack />
     </div>
   );
 }

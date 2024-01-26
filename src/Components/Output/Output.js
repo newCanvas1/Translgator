@@ -20,6 +20,7 @@ export default function Output({ wordsList, toLanguage, didLangChange }) {
     setTranslating(false);
     setShow(true);
     setCheckMessage("");
+    // eslint-disable-next-line
   }, [didLangChange]);
   async function userClickTranslate() {
     setCheckMessage("");
@@ -32,8 +33,27 @@ export default function Output({ wordsList, toLanguage, didLangChange }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ text: wordsList, to: toLanguage }),
+    }).catch((err) => {
+      console.log(err);
+      alert("Something went wrong. Please try again later.");
+      setTranslating(false);
+      return;
     });
+
+    if (res.status === 429) {
+      alert("Too many requests. Please try again later.");
+      setTranslating(false);
+      console.log("Too many requests. Please try again later.");
+      return;
+    }
+    if (res.status !== 200) {
+      alert("Something went wrong. Please try again later.");
+      setTranslating(false);
+      console.log("Something went wrong. Please try again later.");
+      return;
+    }
     const body = await res.json();
+
     setTranslatedWord(body.data);
     setOutputArea(<Input word={body.data} />);
     setShow((prev) => {
@@ -44,6 +64,7 @@ export default function Output({ wordsList, toLanguage, didLangChange }) {
         return !prev;
       });
     }, 200);
+    goToBottom();
     setTranslating(false);
     setInputBoxInScreen(true);
   }
@@ -78,15 +99,17 @@ export default function Output({ wordsList, toLanguage, didLangChange }) {
       setShow(true);
     }, 100);
     // relocate to bottom
+    goToBottom();
+  }
+  function goToBottom() {
     setTimeout(() => {
       window.scrollTo(0, document.body.scrollHeight);
     }, 300);
   }
-
   return (
     <div className="output-area">
       <button
-        disabled={wordsList.length === 0}
+        disabled={wordsList.length === 0 || translating}
         className={
           "input-button background-hover" +
           (wordsList.length === 0 ? " opacity-20" : "")
