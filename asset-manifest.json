@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Translgator/static/css/main.973beeac.css",
-    "main.js": "/Translgator/static/js/main.23da8b21.js",
+    "main.js": "/Translgator/static/js/main.8a3568e4.js",
     "index.html": "/Translgator/index.html",
     "main.973beeac.css.map": "/Translgator/static/css/main.973beeac.css.map",
-    "main.23da8b21.js.map": "/Translgator/static/js/main.23da8b21.js.map"
+    "main.8a3568e4.js.map": "/Translgator/static/js/main.8a3568e4.js.map"
   },
   "entrypoints": [
     "static/css/main.973beeac.css",
-    "static/js/main.23da8b21.js"
+    "static/js/main.8a3568e4.js"
   ]
 }
