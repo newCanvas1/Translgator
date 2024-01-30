@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/translator-quiz/static/css/main.1f46b63c.css",
+    "main.js": "/translator-quiz/static/js/main.96617505.js",
+    "index.html": "/translator-quiz/index.html",
+    "main.1f46b63c.css.map": "/translator-quiz/static/css/main.1f46b63c.css.map",
+    "main.96617505.js.map": "/translator-quiz/static/js/main.96617505.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f46b63c.css",
+    "static/js/main.96617505.js"
+  ]
+}
