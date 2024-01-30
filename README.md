@@ -12,8 +12,8 @@ Translgator is a language learning app designed to help users memorize words fro
 
 After launching Translgator, follow these steps to get started:
 
-1. **Type your sentence/word**.
-2. **Choose The Language** .
+1. **Type your sentence/word**
+2. **Choose The Language**
 3. **Click Start**.
 4. **Type The Missing Letters**
 5. **Click Check**
